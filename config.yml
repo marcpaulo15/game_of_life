@@ -1,0 +1,38 @@
+- config:
+
+    random_seed: null  # int or None (random)
+
+    # Configuration of the screen (grid)
+    width: 800  # in pixels
+    height: 800  # in pixels
+    cell_size: 16  # in pixels (it should be a divisor of 'width' and 'height')
+    grid_is_infinite: True  # bounded (finite) or unbounded (infinite) grid
+    screen_caption: "Conway's Game of Life  [pattern {pat}]  ({paused})"
+    # '{pat}' will be the pattern id (if any pattern is selected)
+    # '{paused}' will be either 'paused' or 'running'
+    # Make sure that screen_caption has '{pat}' and '{paused}' within
+
+    # Colors (RGB)
+    living_cell_color: [255, 255, 0]
+    dead_cell_color: [128, 128, 128]
+    grid_line_color: [0, 0, 0]
+
+    # Minimum and maximum percentage of living cells when generating a new
+    # initial random grid ('g' keyboard)
+    gen_min_pct_living_cells: 5  # percentage
+    gen_max_pct_living_cells: 20  # percentage
+    # Both values must be between [0,100] and max must be greater than min
+
+    # RULES   (you may change them if you want to carry out experiments)
+    # Any dead cell with exactly <3> living neighbours becomes a living cell
+    reproduction: 3
+    # Any living cell with less than <2> living neighbours dies
+    underpopulation: 2
+    # Any living cell with more than <3> living neighbours dies
+    overpopulation: 3
+    # Next Generation: Any living cell with more than 'underpopulation' and
+    # less than 'overpopulation' neighbors lives on to the next generation
+
+    # Control the simulation speed
+    sleep: 0.15  # seconds to wait between iterations (grid updates)
+    fps: 40  # frames per second (pygame)
