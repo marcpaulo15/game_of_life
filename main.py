@@ -76,10 +76,9 @@ class GameOfLife:
 
         :return: configuration dictionary
         """
-
-        this_file_path = os.path.abspath(__file__)
-        project_path = '/'.join(this_file_path.split('/')[:-1])
-        config_path = project_path + '/config.yml'
+     
+        project_dir = os.path.dirname(__file__)
+        config_path = os.path.join(project_dir, 'config.yml')
 
         with open(config_path, 'r') as yml_file:
             config = yaml.safe_load(yml_file)[0]['config']
@@ -121,10 +120,9 @@ class GameOfLife:
 
         if not (1 <= id_ <= 9):
             raise ValueError("the given pattern 'id_' must be between 1 and 9")
-
-        this_file_path = os.path.abspath(__file__)
-        project_path = '/'.join(this_file_path.split('/')[:-1])
-        seed_patterns_path = project_path + '/seed_patterns.yml'
+        
+        project_dir = os.path.dirname(__file__)
+        seed_patterns_path = os.path.join(project_dir, 'seed_patterns.yml')
 
         with open(seed_patterns_path, 'r') as yml_file:
             binary_pattern = yaml.safe_load(yml_file)[0]['patterns'][id_]
